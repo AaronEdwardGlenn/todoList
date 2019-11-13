@@ -1,0 +1,10 @@
+body{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+    align-content: center;
+    color: green;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
