@@ -5,3 +5,10 @@ body{
     align-content: center;
     background-color: aquamarine;
 }
+
+.todo-item{
+    border:2px solid black;
+    margin: 5px; 
+    display: flex;
+    justify-content: space-between;
+}

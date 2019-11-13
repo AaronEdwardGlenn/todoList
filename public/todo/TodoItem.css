@@ -8,3 +8,8 @@ body{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     
 }
+
+.tast-container{
+    border:2px solid black;
+    background-image: url(http://img.jetbitts.com/screensavers/down/abstract/colorchang_8t6q8bzu.gif);
+}

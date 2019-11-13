@@ -61,8 +61,7 @@ class TodoApp extends Component {
                     todoList.update({ todos });
                 }
                 catch (err) {
-                    main.appendChild(error.renderDOM());
-                }
+                    console.log(err); }
                 finally {
                     loading.update({ loading: false });
                 }
