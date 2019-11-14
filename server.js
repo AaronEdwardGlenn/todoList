@@ -15,7 +15,7 @@ const createAuthRoutes = require('./lib/auth/create-auth-routes');
 const authRoutes = createAuthRoutes({
     selectUser(email) {
         return client.query(`
-            SELECT id, email, hash 
+            SELECT id, email, hash, display_name as "displayName" 
             FROM users
             WHERE email = $1;
         `,
@@ -24,11 +24,11 @@ const authRoutes = createAuthRoutes({
     },
     insertUser(user, hash) {
         return client.query(`
-            INSERT into users (email, hash)
-            VALUES ($1, $2)
-            RETURNING id, email;
+            INSERT into users (email, hash, display_name)
+            VALUES ($1, $2, $3)
+            RETURNING id, email, hash, display_name;
         `,
-        [user.email, hash]
+        [user.email, hash, user.display_name]
         ).then(result => result.rows[0]);
     }
 });
