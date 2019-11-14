@@ -25,10 +25,10 @@ async function run() {
         await Promise.all(
             users.map(user => {
                 return client.query(`
-                    INSERT INTO users (id, email, hash, display_name)
-                    VALUES ($1, $2, $3, $4);
+                    INSERT INTO users (email, hash, display_name)
+                    VALUES ($1, $2, $3);
                 `,
-                [user.id, user.email, user.hash, user.display_name]);
+                [user.email, user.hash, user.display_name]);
             })
         );
 
