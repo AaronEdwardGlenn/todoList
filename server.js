@@ -26,9 +26,9 @@ const authRoutes = createAuthRoutes({
         return client.query(`
             INSERT into users (email, hash, display_name)
             VALUES ($1, $2, $3)
-            RETURNING id, email, hash, display_name;
+            RETURNING id, email, hash, display_name as "displayName";
         `,
-        [user.email, hash, user.display_name]
+        [user.email, hash, user.displayName]
         ).then(result => result.rows[0]);
     }
 });
@@ -64,7 +64,7 @@ app.get('/api/todos', async(req, res) => {
             FROM todos
             WHERE user_id = $1; 
         `, 
-        [req.user_id]);
+        [req.userId]);
 
         res.json(result.rows);
     }
@@ -87,7 +87,7 @@ app.post('/api/todos', async(req, res) => {
             VALUES ($1, $2, $3)
             RETURNING *;
         `,
-        [todo.task, todo.complete, req.user_id]);
+        [todo.task, todo.complete, req.userId]);
 
         res.json(result.rows[0]);
     }
