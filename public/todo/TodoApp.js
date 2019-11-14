@@ -8,7 +8,7 @@ import { getTodos, addTodo, updateTodo, removeTodo } from '../services/todo-api.
 class TodoApp extends Component {
 
     async onRender(dom) {
-        const header = new Header({ title: 'My Todos' });
+        const header = new Header({ title: 'Things I Need Todos' });
         dom.prepend(header.renderDOM());
         
         const main = dom.querySelector('main');

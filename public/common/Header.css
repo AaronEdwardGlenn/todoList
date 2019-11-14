@@ -8,8 +8,8 @@ header {
     border-bottom: 1px solid orange;
 }
 
-img.logo {
-    height: 100px;
+.logo {
+    font-size: 50px;
 }
 
 h1 {

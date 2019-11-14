@@ -38,7 +38,6 @@ export function updateTodo(todo) {
         body: JSON.stringify(todo)
     });
 }
-
 export function removeTodo(todoId) {  
     const url = `${URL}/todos/${todoId}`;
     return fetchWithError(url, {
