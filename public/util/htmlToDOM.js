@@ -3,7 +3,7 @@ function htmlToDOM(html) {
     template.innerHTML = html;
     const content = template.content;
 
-    if(content.children.length > 1) {
+    if (content.children.length > 1) {
         throw new Error('html needs to have single parent element');
     }
     
