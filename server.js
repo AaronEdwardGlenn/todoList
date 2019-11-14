@@ -61,29 +61,10 @@ app.get('/api/todos', async(req, res) => {
     try {
         const result = await client.query(`
             SELECT *
-            FROM todos;
-        `);
-
-        res.json(result.rows);
-    }
-    catch (err) {
-        console.log(err);
-        res.status(500).json({
-            error: err.message || err
-        });
-    }
-
-});
-
-app.get('/api/todos/:id', async(req, res) => {
-    const id = req.params.id;
-    try {
-        const result = await client.query(`
-            SELECT *
             FROM todos
-            WHERE id = $1;
-        `,
-        [id]);
+            WHERE user_id = $1; 
+        `, 
+        [req.user_id]);
 
         res.json(result.rows);
     }
@@ -102,11 +83,11 @@ app.post('/api/todos', async(req, res) => {
 
     try {
         const result = await client.query(`
-            INSERT INTO todos (task, complete)
-            VALUES ($1, $2)
+            INSERT INTO todos (task, complete, user_id)
+            VALUES ($1, $2, $3)
             RETURNING *;
         `,
-        [todo.task, todo.complete]);
+        [todo.task, todo.complete, req.user_id]);
 
         res.json(result.rows[0]);
     }
@@ -130,7 +111,6 @@ app.put('/api/todos/:id', async(req, res) => {
             WHERE   id = $1
             RETURNING *;
         `, [id, todo.task, todo.complete]);
-     
         res.json(result.rows[0]);
     }
     catch (err) {

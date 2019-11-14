@@ -46,6 +46,7 @@ class App extends Component {
                 }
             }
         });
+        
         signUpContainer.appendChild(signUp.renderDOM());
     
         const signIn = new SignIn({
