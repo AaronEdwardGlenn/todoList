@@ -1,0 +1,25 @@
+body{
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    justify-content: center;
+    align-content: center;
+    color: black;
+    font-size: large;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    
+}
+
+.tast-container{
+    border:2px solid black;
+}
+
+.todo-item{
+    background-image: url(http://img.jetbitts.com/screensavers/down/abstract/colorchang_8t6q8bzu.gif);
+    background-size: cover;
+    background-blend-mode: lighten;
+}
+
+#is-complete{
+    font-size: x-large;
+}

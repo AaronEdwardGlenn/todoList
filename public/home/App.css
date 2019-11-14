@@ -1,0 +1,29 @@
+section {
+    max-width: 400px;
+    margin: 30px auto;
+    background: whitesmoke;
+    padding: 30px;
+}
+
+form p {
+    margin: 10px 0;
+}
+
+main p.errors, .user-display {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.errors {
+    font-family: monospace;
+    color: red;
+}
+
+.no-display {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    width: 80px;
+}
