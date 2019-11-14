@@ -12,6 +12,34 @@ global.FormData = window.FormData;
 global.localStorage = window.localStorage;
 global.sessionStorage = window.sessionStorage;
 global.URLSearchParams = window.URLSearchParams;
+global.URL = window.URL;
 
 require = require('esm')(module);
 module.exports = require('./tests.js');
+
+function storageMock() {
+    var storage = {};
+
+    return {
+        setItem: function (key, value) {
+            storage[key] = value || '';
+        },
+        getItem: function (key) {
+            return key in storage ? storage[key] : null;
+        },
+        removeItem: function (key) {
+            delete storage[key];
+        },
+        get length() {
+            return Object.keys(storage).length;
+        },
+        key: function (i) {
+            var keys = Object.keys(storage);
+            return keys[i] || null;
+        }
+    };
+}
+
+Object.defineProperty(window, 'localStorage', {
+    value: storageMock(),
+});
